@@ -1,0 +1,45 @@
+<nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">KC Star Mongo Scraper</a>
+            </div>
+            <ul class ="nav navbar-nav navbar-right top-buttons">
+                <ul class="nav navbar-nav">
+                    <li><button type="button" class="btn btn-primary home" id="scrape">Home</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+<div class = "articles">
+    {{#each articles}}
+        {{#if saved}}
+        <div class = "article">
+            <a href = "{{this.link}}"><h2>{{this.title}}</h2></a>
+
+            <button class = "btn btn-primary delete" data-id = "{{this._id}}">Delete</button>
+            <button class = "btn btn-primary addNote" data-id = "{{this._id}}">Add a Note</button>
+            <br>
+        </div>
+        {{else}}
+            <div class = "row">
+                <div class ="col-md-12">
+                    <span>There are no saved Articles</span>
+                </div>
+            </div>
+        {{/if}}
+        {{/each}}
+
+    <div id = "noteModal" class = "modal-fade" role = "dialog">
+        <div class ="modal-dialog modal-md">
+            <div class = "modal-content">
+                <div class = "modal-header">
+                    <button type = "button" class="close" data-dismiss ="modal">&times;</button>
+                    <h4 class = "modal-title text-center">Add your notes</h4>
+                </div>
+                <div id = "notes" class = "modal-body"></div>
+            </div>
+        </div>
+    </div>
+</div>
