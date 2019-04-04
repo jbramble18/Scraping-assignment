@@ -22,7 +22,7 @@ var app = express();
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Parse request body as JSON
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
@@ -42,7 +42,7 @@ mongoose.connect("mongodb://localhost/newsdb", { useNewUrlParser: true });
 // A GET route for scraping the echoJS website
 app.get("/", function (req, res) {
   db.Article
-  .find({saved: false})
+  .find({})
   .then(function(dbArticle) {
     var hbsObject = {
       articles: dbArticle
@@ -54,16 +54,17 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/all", function(req,res) {
-  db.Article
-  .find({})
-  .then(function(dbArticle){
-    res.json(dbArticle)
-  })
-  .catch(function(err){
-    res.json(err)
-  });
-});
+// app.get("/all", function(req,res) {
+//   db.Article
+//   .find({})
+//   .then(function(dbArticle){
+//     res.render("index", { dbArticle })
+//     res.json(dbArticle)
+//   })
+//   .catch(function(err){
+//     res.json(err)
+//   });
+// });
 
 
 // A GET route for scraping the echoJS website

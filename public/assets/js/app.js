@@ -1,4 +1,5 @@
 $(document).on("click", "#scrape", function () {
+  $(".load").html();
   $.get("/scrape", function (req, res) {
       console.log(res);
     })
@@ -27,7 +28,7 @@ $(document).on("click", ".save", function (event) {
     });
 });
 
-$(document).on("click", ".unsave", function () {
+$(document).on("click", ".delete", function () {
   $(this).parent().remove();
   var articleId = $(this).attr("data-id");
 
@@ -40,7 +41,18 @@ $(document).on("click", ".unsave", function () {
     });
 });
 
+$(document).on("click", "#saved", function() {
+  $.get("/saved", function (req, res) {
+    console.log(res);
+  })
+  .then(function(data) {
+    window.location.href = "/saved";
+  });
+});
+
 $(document).on("click", ".addNote", function (event) {
+  event.preventDefault();
+
   $("#notes").empty();
   var thisId = $(this).attr("data-id");
 
