@@ -1,31 +1,46 @@
-<h1>Articles that You have scraped </h1>
+{{!-- <div class="row" id = "header">
+    <div class="col-md-12">
+        <h1>All the News (From Kansas City) that's fit </h1>
+    </div>
+</div> --}}
 
-<h2>Scraped Articles</h2>
 
- <nav class="navbar navbar-dark bg-primary">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">KC Star Mongo Scraper</a>
-            </div>
-            <ul class ="nav navbar-nav navbar-right top-buttons">
-                <ul class="nav navbar-nav">
-                    <li><button type="button" class="btn btn-primary" id="scrape">Scrape Articles</button></li>
-                    <li><button type = "button" class="btn btn-primary" id = "saved">Saved Articles</button></li>
-                </ul>
+<nav class="navbar navbar-dark bg-danger">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">KC Star Mongo Scraper</a>
+        </div>
+        <form class="form-inline">
+            {{!-- <ul class ="nav navbar-nav navbar-right top-buttons"> --}}
+            {{!-- <ul class="nav navbar-nav"> --}}
+            <button type="button" class="btn btn-danger" id="scrape">Scrape Articles</button>
+            <button type="button" class="btn btn-danger" id="saved">Saved Articles</button>
+            {{!-- </ul> --}}
+        </form>
+    </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="jumbotron">
+
+            <div class="articles">
+                <div class="load">
+                    {{#each articles}}
+                    {{#unless saved}}
+                    <div class="article">
+                        <a href="{{link}}">
+                            <h2>{{title}}</h2>
+                        </a>
+                        <button class="btn btn-danger save" data-id="{{_id}}">Save Article</button>
+                        <br>
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                </div>
             </div>
         </div>
-    </nav>
 
-<div class = "articles">
-    <div class = "load">
-        {{#each articles}}
-        {{#unless saved}}
-            <div class = "article">
-                <a href = "{{link}}"><h2>{{title}}</h2></a>
-                <button class = "btn btn-danger save" data-id = "{{_id}}">Save Article</button>
-                <br>
-            </div>
-            {{/unless}}
-            {{/each}}
+
     </div>
 </div>

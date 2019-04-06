@@ -22,7 +22,7 @@ var app = express();
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Parse request body as JSON
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
@@ -160,7 +160,7 @@ app.post("/createNote/:id", function (req, res) {
   db.Note
   .create(req.body)
   .then(function(dbNote) {
-    return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true});
+    return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: {note: dbNote._id } }, { new: true});
   })
   .then(function(dbArticle) {
     res.json(dbArticle);
