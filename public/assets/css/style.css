@@ -1,13 +1,13 @@
 a {
     color: black;
-font-family: 'Slabo 27px', serif;
+    font-family: 'Slabo 27px', serif;
 
 }
 
 #header {
     background-color: white;
     text-align: center;
-font-family: 'Slabo 27px', serif;
+    font-family: 'Slabo 27px', serif;
 
 }
 
@@ -17,7 +17,12 @@ body {
 }
 
 .jumbotron {
-    background-color: rgb(207, 201, 181)
-    
+    background-color: rgb(207, 201, 181);
+    border-style: solid;
+    border-color: black;
+
 }
 
+.navbar {
+    font-family: 'Slabo 27px', serif;
+}
