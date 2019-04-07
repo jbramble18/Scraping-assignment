@@ -35,7 +35,11 @@ app.engine("handlebars", exphbs({
 
 app.set("view engine", "handlebars");
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/newsdb", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/newsdb", { useNewUrlParser: true });
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsdb";
+
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
@@ -54,17 +58,7 @@ app.get("/", function (req, res) {
   });
 });
 
-// app.get("/all", function(req,res) {
-//   db.Article
-//   .find({})
-//   .then(function(dbArticle){
-//     res.render("index", { dbArticle })
-//     res.json(dbArticle)
-//   })
-//   .catch(function(err){
-//     res.json(err)
-//   });
-// });
+
 
 
 // A GET route for scraping the echoJS website

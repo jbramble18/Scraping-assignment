@@ -66,7 +66,7 @@ $(document).on("click", ".addNote", function (event) {
     $("#notes").append("<p id = 'notesbody'></p>");
     $("#notes").append("<div class='form-group'><label for='title'>Title: </label><input id='titleinput' class='form-control' name='title'></div>");
     $("#notes").append("<div class='form-group'><label for='body'>Note: </label><input id='bodyinput' class='form-control' name='body'></div>");
-    $("#notes").append("<button class='btn btn-default' data-id='" + data._id + "' id='saveNote'>Save Note</button>");
+    $("#notes").append("<button class='btn btn-danger' data-id='" + data._id + "' id='saveNote'>Save Note</button>");
 
     if (data.note) {
       $("#notestitle").text(data.note.title);
